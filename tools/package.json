@@ -1,0 +1,14 @@
+{
+  "name": "justboereh-tools",
+  "version": "1.0.0",
+  "description": "Tools for justboereh website.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "justboereh",
+  "license": "ISC",
+  "dependencies": {
+    "color-convert": "^2.0.1"
+  }
+}

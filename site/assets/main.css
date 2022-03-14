@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.om {
+  font-family: OpemMoji;
+}
+
+.om-black {
+  font-family: OpemMoji;
+  font-style: oblique;
+}
+
+body {
+  background-color: #f3f4f6;
+  overflow: hidden;
+  font-family: Noto Sans;
+  font-weight: 400;
+}
+
+body.dark {
+  background-color: #111827;
+}
+
+#__nuxt,
+#__layout {
+  width: 100vw;
+  height: 100vh;
+}

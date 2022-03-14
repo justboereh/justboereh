@@ -1,0 +1,12 @@
+ErrorDocument 403 /index.php
+ErrorDocument 404 /
+
+Options All -Indexes
+
+ServerSignature Off
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+RedirectMatch 404 /\..*$
