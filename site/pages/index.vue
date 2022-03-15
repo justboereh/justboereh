@@ -5,20 +5,37 @@
         ref="home-image"
         class="absolute h-full top-0 left-0"
         :style="imagescale"
-        src="/IMG_5078.jpg"
+        src="/IMG_5078.webp"
         alt=""
       />
 
       <div
         class="absolute w-full h-full flex flex-col items-center justify-center"
       >
-        <div class="typer-element">
-          <span></span>
+        <p>I am</p>
 
-          <span>|</span>
-        </div>
         <p class="text-5xl font-bold leading-none">BOE REH</p>
+
+        <div class="font-light">
+          <p>full stack web developer</p>
+        </div>
       </div>
+
+      <div
+        class="absolute w-full h-full flex flex-col items-center justify-center"
+      >
+        <p>I am</p>
+
+        <p class="text-5xl font-bold leading-none">BOE REH</p>
+
+        <div class="font-light">
+          <p>full stack web developer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-red-500 h-20 w-screen relative">
+      <Nuxt-Link :class="``" to="/works">See my works</Nuxt-Link>
     </div>
     <br />
     <br />
@@ -32,8 +49,6 @@
 </template>
 
 <script>
-import Typewriter from 'typewriter-effect/dist/core'
-
 import ismobile from '../scripts/ismobile'
 
 export default {
@@ -54,12 +69,6 @@ export default {
     },
   },
   mounted() {
-    new Typewriter('.typer-element', {
-      strings: ['I am', 'I an', 'I m', 'Eye m', ' Eye am'],
-      autoStart: true,
-      loop: true,
-    })
-
     if (ismobile()) {
       // this.$refs['home-image'].src = '/IMG_5078.webp'
     }
