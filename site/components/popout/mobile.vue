@@ -16,19 +16,38 @@
 
       <div class="grow"></div>
 
-      <div
-        class="mx-1 py-2 flex justify-evenly"
-        href="/#contact"
-        @click="linkclicked"
-      >
-        <span class="ri-github-fill" href="//github.com/justboereh"></span>
-        <span class="ri-youtube-fill" href="//youtube.com/justboereh"></span>
+      <div class="mx-1 py-2 flex justify-evenly">
+        <span
+          class="ri-github-fill"
+          href="http://github.com/justboereh"
+          target="_blank"
+          @click="linkclicked"
+        ></span>
+        <span
+          class="ri-youtube-fill"
+          href="http://youtube.com/justboereh"
+          target="_blank"
+          @click="linkclicked"
+        ></span>
         <span
           class="ri-soundcloud-fill"
-          href="//soundcloud.com/justboereh"
+          href="http://soundcloud.com/justboereh"
+          target="_blank"
+          @click="linkclicked"
         ></span>
-        <span class="ri-twitter-fill" href="//twitter.com/justboereh"></span>
-        <span href="//tiktok.com/@justboereh"> tiktok </span>
+        <span
+          class="ri-twitter-fill"
+          href="http://twitter.com/justboereh"
+          target="_blank"
+          @click="linkclicked"
+        ></span>
+        <span
+          href="http://tiktok.com/@justboereh"
+          target="_blank"
+          @click="linkclicked"
+        >
+          tiktok
+        </span>
       </div>
 
       <div class="grow"></div>
@@ -84,7 +103,8 @@ export default {
   },
   computed: {
     popoutclass() {
-      const x = this.$store.state.topbar.showPopout
+      const x = this.$store.state.content.isPoppedout
+
       return `${popout} ${!x ? 'opacity-0 pointer-events-none' : ''}`
     },
   },
@@ -93,7 +113,7 @@ export default {
       if (target.tagName === 'TD') target = target.parentNode
       if (!target.hasAttribute('href')) return
 
-      this.$store.commit('topbar/setPopout', false)
+      this.$store.commit('content/isPoppedout', false)
 
       const isNewTab = target.getAttribute('target') === '_blank'
 

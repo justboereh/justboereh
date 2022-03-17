@@ -34,10 +34,10 @@ export default {
   },
   computed: {
     topbarclass() {
-      const x = this.$store.state.topbar.hide
-      
+      const toHide = this.$store.state.topbar.hide
+
       return `${navbarmain} ${
-        x && !this.popoutshown ? '-translate-y-full' : ''
+        toHide && !this.popoutshown ? '-translate-y-full' : ''
       }`
     },
     navbarmenuclass() {
@@ -51,7 +51,10 @@ export default {
   },
   methods: {
     menuclicked() {
-      this.$store.commit('topbar/togglePopout')
+      this.$store.commit(
+        'content/isPoppedout',
+        !this.$store.state.content.isPoppedout
+      )
     },
     gohome() {
       this.$router.replace(this.homehref)

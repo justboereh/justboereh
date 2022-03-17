@@ -21,22 +21,50 @@
         </div>
       </div>
 
-      <div
-        class="absolute w-full h-full flex flex-col items-center justify-center"
-      >
-        <p>I am</p>
-
-        <p class="text-5xl font-bold leading-none">BOE REH</p>
-
-        <div class="font-light">
-          <p>full stack web developer</p>
-        </div>
+      <div class="absolute bottom-0 w-full flex justify-center py-8">
+        <span
+          class="bg-gradient-to-br from-primary/50 to-secondary/50 hover:from-primary/100 hover:to-secondary/100 cursor-pointer px-4 py-2 rounded shadow-md"
+        >
+          see my works
+        </span>
       </div>
     </div>
 
     <div class="bg-red-500 h-20 w-screen relative">
       <Nuxt-Link :class="``" to="/works">See my works</Nuxt-Link>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    wow
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    wow
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    wow
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    wow
     <br />
     <br />
     <br />
@@ -54,7 +82,7 @@ import ismobile from '../scripts/ismobile'
 export default {
   computed: {
     imagescale() {
-      const lsy = this.$store.state.lastscrolledy.value
+      const lsy = this.$store.state.content.scrollTop
       const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
 
       return `transform: scale(${clamp(
@@ -65,7 +93,7 @@ export default {
         lsy / 25,
         0,
         16
-      )}px) grayscale(100%); opacity: ${clamp(1 - lsy / 222, 0, 1)}`
+      )}px) grayscale(100%); opacity: ${clamp(1 - lsy / 444, 0, 1)}`
     },
   },
   mounted() {

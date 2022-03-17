@@ -22,9 +22,6 @@ export default {
         href: 'https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css',
       },
     ],
-    script: [
-      { src: 'https://unpkg.com/typewriter-effect@latest/dist/core.js' },
-    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -47,7 +44,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '~/modules/typer.js',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -60,6 +56,13 @@ export default {
         tailwindcss: {},
         autoprefixer: {},
       },
+    },
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'errorpage',
+        path: '*',
+        component: resolve(__dirname, 'pages/error.vue'),
+      })
     },
   },
 }

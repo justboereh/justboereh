@@ -22,6 +22,8 @@ body {
   overflow: hidden;
   font-family: Noto Sans;
   font-weight: 400;
+  width: 100vw;
+  height: 100vh;
 }
 
 body.dark {
@@ -32,4 +34,5 @@ body.dark {
 #__layout {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }

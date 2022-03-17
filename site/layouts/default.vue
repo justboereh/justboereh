@@ -1,13 +1,19 @@
 <template>
-  <div
-    ref="main"
-    class="w-screen h-screen overflow-x-hidden dark:text-gray-100"
-  >
+  <div class="w-screen h-screen overflow-hidden">
     <NavbarMain />
 
-    <main class="pt-14 sm:pt-20 dark:text-gray-100">
-      <Nuxt />
+    <div :class="toppadding + ' w-screen transition-all'"></div>
+
+    <main
+      ref="main"
+      class="w-screen h-screen overflow-x-hidden dark:text-gray-100"
+    >
+      <Nuxt class="overflow-y-auto" />
     </main>
+
+    <span :class="scrolltotopclass" @click="scrolltotop">
+      <i class="ri-arrow-up-line text-gray-100"></i>
+    </span>
 
     <PopoutMobile />
   </div>
@@ -16,18 +22,17 @@
 <script>
 import thememode from '../scripts/thememode'
 
-const divclass =
-  'relative bg-gray-100 dark:bg-gray-900 dark:text-gray-100 h-screen w-screen max-h-screen max-w-screen overflow-hidden'
 const scrolltotopclass =
   'absolute bottom-0 right-0 m-2 px-2 py-1 rounded-lg transition duration-200'
 
 export default {
   data() {
     return {
-      divclass,
-      scrolltotopclass,
+      scrolltotopclass:
+        scrolltotopclass + ' opacity-0 bg-primary pointer-events-none',
       hidescrollnum: 0,
       lastscrolledy: 0,
+      toppadding: 'h-14 sm:h-20 w-screen',
     }
   },
   mounted() {
@@ -45,31 +50,32 @@ export default {
     this.$refs.main.removeEventListener('scroll', this.scrollEvent)
   },
   methods: {
-    scrolltotop() {},
+    scrolltotop() {
+      this.$refs.main.scrollTo(0, 0)
+    },
     scrollEvent({ target }) {
       const newscrollnum = Math.random()
       this.hidescrollnum = newscrollnum
 
-      this.$store.commit('lastscrolledy/set', target.scrollTop)
+      this.$store.commit('content/scrollTop', target.scrollTop)
 
       setTimeout(() => {
         if (newscrollnum !== this.hidescrollnum || target.scrollTop < 80) return
         this.scrolltotopclass = `${scrolltotopclass} bg-primary/10`
       }, 2000)
 
-      this.scrolltotopclass = `${scrolltotopclass}${
-        target.scrollTop < 80
-          ? ' opacity-0 bg-primary pointer-events-none'
-          : ' bg-primary '
+      this.scrolltotopclass = `${scrolltotopclass} ${
+        target.scrollTop >= 80 ? 'bg-primary' : 'opacity-0 pointer-events-none'
       }`
 
-      if (
-        target.scrollTop - this.lastscrolledy <= 0 ||
-        !target.scrollTop >= 80
-      ) {
+      if (target.scrollTop - this.lastscrolledy <= 0 || target.scrollTop < 1) {
         this.$store.commit('topbar/setHide', false)
+
+        this.toppadding = 'h-14 sm:h-20'
       } else {
         this.$store.commit('topbar/setHide', true)
+
+        this.toppadding = 'h-0'
       }
 
       this.lastscrolledy = target.scrollTop
