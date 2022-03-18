@@ -23,7 +23,7 @@
 
       <div class="absolute bottom-0 w-full flex justify-center py-8">
         <span
-          class="bg-gradient-to-br from-primary/50 to-secondary/50 hover:from-primary/100 hover:to-secondary/100 cursor-pointer px-4 py-2 rounded shadow-md"
+          class="bg-gradient-to-br from-primary to-secondary cursor-pointer px-4 py-2 rounded shadow-md"
         >
           see my works
         </span>

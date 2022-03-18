@@ -7,11 +7,11 @@
     </p>
 
     <span class="pt-8 flex gap-8 items-center text-sm">
-      <span class="px-4 py-2" :click="gohome">take me home</span>
+      <span class="px-4 py-2" @click="gohome">take me home</span>
 
       <span
         class="bg-gradient-to-br from-primary to-secondary px-4 py-2 rounded-md"
-        :click="goback"
+        @click="goback"
       >
         let's go back
       </span>
