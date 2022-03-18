@@ -3,14 +3,14 @@
     <h1 class="text-3xl">⚠️ ERROR</h1>
 
     <p class="text-center text-sm">
-      oh no! it's not your fault, but something went wrong.
+      not your fault, but this doesn't look right.
     </p>
 
     <span class="pt-8 flex gap-8 items-center text-sm">
       <span class="px-4 py-2" @click="gohome">take me home</span>
 
       <span
-        class="bg-gradient-to-br from-primary to-secondary px-4 py-2 rounded-md"
+        class="bg-gradient-to-br from-primary to-secondary px-4 py-2 rounded"
         @click="goback"
       >
         let's go back
@@ -22,12 +22,12 @@
 <script>
 export default {
   methods: {
-    gpback() {
+    goback() {
       this.$router.go(-1)
     },
-  },
-  gohome() {
-    this.$router.replace('/')
+    gohome() {
+      this.$router.replace('/')
+    },
   },
 }
 </script>

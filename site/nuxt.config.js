@@ -58,6 +58,17 @@ export default {
     '@nuxt/postcss8',
   ],
 
+  // Router: https://nuxtjs.org/docs/configuration-glossary/configuration-router#extendroutes
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'errorpage',
+        path: '*',
+        component: resolve(__dirname, 'pages/error.vue'),
+      })
+    },
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -75,12 +86,6 @@ export default {
         autoprefixer: {},
       },
     },
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'errorpage',
-        path: '*',
-        component: resolve(__dirname, 'pages/404.vue'),
-      })
-    },
+    extractCSS: true,
   },
 }

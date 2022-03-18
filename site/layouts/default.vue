@@ -8,7 +8,7 @@
       ref="main"
       class="w-screen h-screen overflow-x-hidden dark:text-gray-100"
     >
-      <Nuxt class="overflow-y-auto" />
+      <Nuxt class="overflow-y-auto" keep-alive />
     </main>
 
     <span :class="scrolltotopclass" @click="scrolltotop">
