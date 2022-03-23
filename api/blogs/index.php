@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 
 require_once('../vendor/autoload.php');
 require '../rb.php';
@@ -10,8 +11,7 @@ $rbconn = R::setup( 'mysql:host='. $_ENV['dbhost'] .';dbname='. $_ENV['dbname'],
 
 $filterstr = "";
 $toget = [
-	'year' => " year=&&",
-	'month' => " month=&&",
+	'id' => " id = &&",
 	'title' => " title like '%&&%'",
 ];
 
