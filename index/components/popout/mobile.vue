@@ -56,11 +56,11 @@
       <div class="grow"></div>
 
       <div
-        class="mx-1 py-2 bg-gradient-to-br from-primary to-secondary border border-gray-100/5 rounded-md text-center"
+        class="mx-1 p-0.5 bg-gradient-to-br from-primary to-secondary border border-gray-100/5 rounded-sm text-center"
         href="/#contact"
         @click="linkclicked"
       >
-        📝 contact
+        <div class="w-full h-full bg-gray-900 rounded-sm py-2">📝 contact</div>
       </div>
     </div>
   </div>

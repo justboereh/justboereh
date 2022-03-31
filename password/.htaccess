@@ -1,0 +1,10 @@
+ErrorDocument 403 /
+ErrorDocument 404 /
+
+Options All -Indexes
+
+ServerSignature Off
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]

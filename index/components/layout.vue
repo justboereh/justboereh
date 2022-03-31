@@ -9,7 +9,6 @@
       class="w-screen h-screen overflow-x-hidden dark:text-gray-100"
     >
       <slot class="overflow-y-auto" keep-alive />
-      {{ homepage }}
     </main>
 
     <span :class="scrolltotopclass" @click="scrolltotop">
