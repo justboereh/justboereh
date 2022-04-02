@@ -1,20 +1,21 @@
 <template>
   <div :class="popoutclass">
     <div class="flex flex-col h-full overflow-y-auto">
-      <table class="w-full border-0">
-        <tbody>
-          <tr
-            v-for="link of links"
-            :key="link.text"
-            :href="link.href"
-            :target="link.target || ''"
-            @click="linkclicked"
-          >
-            <td class="py-4 text-center">{{ link.emoji }}</td>
-            <td class="py-4">{{ link.text }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="grow"></div>
+
+      <div class="w-full border-0 flex flex-col items-center">
+        <span
+          v-for="link of links"
+          :key="link.text"
+          :href="link.href"
+          :target="link.target || ''"
+          class="flex items-center relative"
+          @click="linkclicked"
+        >
+          <i :class="`ri-${link.icon}-line text-sm absolute -left-1/4`"></i>
+          <span class="py-4">{{ link.text }}</span>
+        </span>
+      </div>
 
       <div class="grow"></div>
 
@@ -56,48 +57,51 @@
       <div class="grow"></div>
 
       <div
-        class="mx-1 p-0.5 bg-gradient-to-br from-primary to-secondary border border-gray-100/5 rounded-sm text-center"
+        class="mx-6 p-0.5 bg-gradient-to-br from-primary to-secondary border border-gray-100/5 rounded-sm text-center"
         href="/#contact"
         @click="linkclicked"
       >
-        <div class="w-full h-full bg-gray-900 rounded-sm py-2">📝 contact</div>
+        <div class="w-full h-full bg-gray-900 rounded-sm py-4">contact me</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+const anime = require('animejs');
+
 const popout =
-  'text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-900 text-gray-100 top-0 z-10 transition duration-150 px-2 pb-4 pt-14'
+  'text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-900 text-gray-100 top-0 transition duration-150 px-2 pb-4 pt-14'
 
 export default {
   data() {
     return {
+      target: null,
       links: [
         {
           href: '/',
-          emoji: '🏠',
+          icon: 'home-4',
           text: 'head home',
         },
         {
           href: '//github.com/justboereh',
-          emoji: '💻',
+          icon: 'folders',
           text: 'my works',
           target: '_blank',
         },
         {
           href: '/#about',
-          emoji: '👦',
+          icon: 'user-6',
           text: 'about me',
         },
         {
           href: '/blogs',
-          emoji: '📰',
+          icon: 'article',
           text: 'my blogs',
         },
         {
           href: '/tools',
-          emoji: '🛠',
+          icon: 'tools',
           text: 'just tools',
         },
       ],
@@ -109,19 +113,90 @@ export default {
 
       return `${popout} ${!x ? 'opacity-0 pointer-events-none' : ''}`
     },
+    poppedout() {
+      return this.$store.state.content.isPoppedout
+    },
+  },
+  watch: {
+    poppedout(val) {
+      if (val && this.target && this.target.querySelector('i')) {
+        anime({
+          targets: this.target.querySelector('i'),
+          left: '-25%',
+          duration: 0,
+        })
+
+        anime({
+          targets: this.target.querySelector('span'),
+          opacity: 1,
+          duration: 0,
+        })
+      }
+    },
   },
   methods: {
     linkclicked({ target }) {
-      if (target.tagName === 'TD') target = target.parentNode
-      if (!target.hasAttribute('href')) return
+      while (!target.hasAttribute('href')) {
+        if (!target.parentNode) return
 
-      this.$store.commit('content/isPoppedout', false)
+        target = target.parentNode
+      }
 
-      const isNewTab = target.getAttribute('target') === '_blank'
+      if (this.$route.path === target.getAttribute('href')) {
+        if (target.querySelector('i')) {
+          anime({
+            targets: target.querySelector('i'),
+            left: '25%',
+            duration: 150,
+            direction: 'alternate',
+            easing: 'cubicBezier(.5, .05, .1, .3)',
+          })
+          anime({
+            targets: target.querySelector('span'),
+            opacity: 0.75,
+            duration: 150,
+            direction: 'alternate',
+            easing: 'cubicBezier(.5, .05, .1, .3)',
+          })
+        }
 
-      isNewTab
-        ? window.open(target.getAttribute('href'), '_blank')
-        : this.$router.push(target.getAttribute('href'))
+        return
+      }
+
+      this.target = target
+
+      const doRoute = () => {
+        this.$store.commit('content/isPoppedout', false)
+
+        const isNewTab = target.getAttribute('target') === '_blank'
+
+        isNewTab
+          ? window.open(target.getAttribute('href'), '_blank')
+          : this.$router.push(target.getAttribute('href'))
+      }
+
+      if (target.querySelector('i')) {
+        anime({
+          targets: target.querySelector('i'),
+          left: '125%',
+          duration: 350,
+          easing: 'cubicBezier(.5, .05, .1, .3)',
+        })
+        anime({
+          targets: target.querySelector('span'),
+          opacity: 0,
+          duration: 350,
+          easing: 'cubicBezier(.5, .05, .1, .3)',
+        })
+
+        setTimeout(() => {
+          doRoute()
+        }, 400)
+
+        return
+      }
+
+      doRoute()
     },
   },
 }

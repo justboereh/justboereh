@@ -1,8 +1,9 @@
 <template>
   <div class="w-screen h-screen overflow-hidden">
-    <NavbarMain :homepage="homepage" />
-
-    <div :class="toppadding + ' w-screen transition-all'"></div>
+    <div
+      ref="paddingdiv"
+      :class="toppadding + ' w-screen transition-all'"
+    ></div>
 
     <main
       ref="main"
@@ -16,10 +17,14 @@
     </span>
 
     <PopoutMobile />
+
+    <NavbarMain :homepage="homepage" />
   </div>
 </template>
 
 <script>
+const anime = require('animejs');
+
 import thememode from '../scripts/thememode'
 
 const scrolltotopclass =
@@ -40,6 +45,22 @@ export default {
       lastscrolledy: 0,
       toppadding: 'h-14 sm:h-20 w-screen',
     }
+  },
+  computed: {
+    hidenavbar() {
+      return this.$store.state.topbar.hide
+    },
+  },
+  watch: {
+    hidenavbar(val) {
+      const paddingdivHeight = this.$refs.paddingdiv.offsetHeight
+
+      anime({
+        targets: this.$refs.paddingdiv,
+        translateY: val ? -paddingdivHeight : 0,
+        duration: 250,
+      })
+    },
   },
   mounted() {
     thememode()

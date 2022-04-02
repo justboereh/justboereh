@@ -61,6 +61,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxt/postcss8',
+    'nuxt-animejs'
   ],
 
   // Router: https://nuxtjs.org/docs/configuration-glossary/configuration-router#extendroutes

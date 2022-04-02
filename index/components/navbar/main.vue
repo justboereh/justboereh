@@ -1,5 +1,8 @@
 <template>
-  <nav :class="topbarclass">
+  <nav
+    ref="navbar"
+    class="'bg-gray-900 text-gray-100 w-screen top-0 h-14 sm:h-20 fixed border-b transition duration-200 bg-gray-900 border-gray-800 transform"
+  >
     <div class="flex w-screen h-full items-center px-1">
       <img
         src="/logo-long.svg"
@@ -22,9 +25,9 @@
 </template>
 
 <script>
-export const navbarmenu = 'px-2 py-1 transition duration-200 delay-100'
-export const navbarmain =
-  'z-20 bg-gray-900 text-gray-100 w-screen h-14 sm:h-20 fixed border-b transition duration-200 border-gray-800 transform'
+const anime = require('animejs');
+
+const navbarmenu = 'px-2 py-1 transition duration-200 delay-100'
 
 export default {
   props: {
@@ -34,23 +37,30 @@ export default {
     },
   },
   computed: {
-    topbarclass() {
-      const toHide = this.$store.state.topbar.hide
-
-      return `${navbarmain} ${
-        toHide && !this.popoutshown ? '-translate-y-full' : ''
-      }`
-    },
     navbarmenuclass() {
-      return `${navbarmenu} ${
-        this.popoutshown ? 'ri-close-line' : 'ri-menu-line'
-      }`
+      const popoutshown = this.$store.state.topbar.showPopout
+
+      return `${navbarmenu} ${popoutshown ? 'ri-close-line' : 'ri-menu-line'}`
     },
-    popoutshown() {
-      return this.$store.state.topbar.showPopout
+    hide() {
+      return this.$store.state.topbar.hide
+    },
+  },
+  watch: {
+    hide(val) {
+      const navbarHeight = this.$refs.navbar.offsetHeight
+
+      anime({
+        targets: this.$refs.navbar,
+        translateY: val ? -navbarHeight : 0,
+        duration: 250,
+      })
     },
   },
   methods: {
+    popoutshown() {
+      return this.$store.state.topbar.showPopout
+    },
     menuclicked() {
       this.$store.commit(
         'content/isPoppedout',

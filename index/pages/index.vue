@@ -80,6 +80,15 @@
 import ismobile from '../scripts/ismobile'
 
 export default {
+  head: {
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'My very own personal website',
+      },
+    ],
+  },
   computed: {
     imagescale() {
       const lsy = this.$store.state.content.scrollTop
