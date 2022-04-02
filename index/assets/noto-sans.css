@@ -1,0 +1,108 @@
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 900;
+  font-style: normal;
+  src: url('/noto-sans/Black.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 900;
+  font-style: italic;
+  src: url('/noto-sans/BlackItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 700;
+  font-style: normal;
+  src: url('/noto-sans/Bold.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 700;
+  font-style: italic;
+  src: url('/noto-sans/BoldItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 800;
+  font-style: normal;
+  src: url('/noto-sans/ExtraBold.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 800;
+  font-style: italic;
+  src: url('/noto-sans/ExtraBoldItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 500;
+  font-style: italic;
+  src: url('/noto-sans/Italic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 300;
+  font-style: normal;
+  src: url('/noto-sans/ExtraLight.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 400;
+  font-style: italic;
+  src: url('/noto-sans/ExtraLightItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 300;
+  font-style: normal;
+  src: url('/noto-sans/Light.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 300;
+  font-style: italic;
+  src: url('/noto-sans/LightItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 500;
+  font-style: normal;
+  src: url('/noto-sans/Medium.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 500;
+  font-style: italic;
+  src: url('/noto-sans/MediumItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 400;
+  font-style: italic;
+  src: url('/noto-sans/Regular.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 600;
+  font-style: normal;
+  src: url('/noto-sans/SemiBold.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 600;
+  font-style: italic;
+  src: url('/noto-sans/SemiBoldItalic.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 100;
+  font-style: normal;
+  src: url('/noto-sans/Thin.ttf');
+}
+@font-face {
+  font-family: Noto Sans;
+  font-weight: 100;
+  font-style: italic;
+  src: url('/noto-sans/ThinItalic.ttf');
+}

@@ -1,17 +1,17 @@
 <template>
   <nav
     ref="navbar"
-    class="'bg-gray-900 text-gray-100 w-screen top-0 h-14 sm:h-20 fixed border-b transition duration-200 bg-gray-900 border-gray-800 transform"
+    class="'bg-gray-900 text-gray-100 w-screen top-0 h-14 md:h-20 fixed border-b transition duration-200 bg-gray-900 border-gray-800 transform"
   >
     <div class="flex w-screen h-full items-center px-1">
       <img
-        src="/logo-long.svg"
+        src="/img/logo-long.svg"
         alt="long version of logo"
         class="h-8 px-2 hidden sm:block"
         @click="gohome"
       />
       <img
-        src="/logo-short-white.svg"
+        src="/img/logo-short-white.svg"
         alt="short version of logo"
         class="h-6 px-2 sm:hidden"
         @click="gohome"
@@ -25,10 +25,6 @@
 </template>
 
 <script>
-const anime = require('animejs');
-
-const navbarmenu = 'px-2 py-1 transition duration-200 delay-100'
-
 export default {
   props: {
     homepage: {
@@ -38,9 +34,11 @@ export default {
   },
   computed: {
     navbarmenuclass() {
-      const popoutshown = this.$store.state.topbar.showPopout
+      const popoutshown = this.$store.state.content.isPoppedout
 
-      return `${navbarmenu} ${popoutshown ? 'ri-close-line' : 'ri-menu-line'}`
+      return `${
+        popoutshown ? 'ri-close-line' : 'ri-menu-line'
+      } px-2 py-1 transition duration-200 delay-100 sm:hidden`
     },
     hide() {
       return this.$store.state.topbar.hide
@@ -50,13 +48,15 @@ export default {
     hide(val) {
       const navbarHeight = this.$refs.navbar.offsetHeight
 
-      anime({
+      this.$anime({
         targets: this.$refs.navbar,
-        translateY: val ? -navbarHeight : 0,
+        top: val ? -navbarHeight : 0,
         duration: 250,
+        easing: 'cubicBezier(.5, .05, .1, .3)',
       })
     },
   },
+
   methods: {
     popoutshown() {
       return this.$store.state.topbar.showPopout

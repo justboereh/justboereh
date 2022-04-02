@@ -1,5 +1,8 @@
 <template>
-  <div :class="popoutclass">
+  <div
+    ref="popout"
+    class="text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-900 opacity-0 text-gray-100 top-0 px-2 pb-4 pt-14 pointer-events-none"
+  >
     <div class="flex flex-col h-full overflow-y-auto">
       <div class="grow"></div>
 
@@ -10,7 +13,7 @@
           :href="link.href"
           :target="link.target || ''"
           class="flex items-center relative"
-          @click="linkclicked"
+          @click.self="linkclicked"
         >
           <i :class="`ri-${link.icon}-line text-sm absolute -left-1/4`"></i>
           <span class="py-4">{{ link.text }}</span>
@@ -68,11 +71,6 @@
 </template>
 
 <script>
-const anime = require('animejs');
-
-const popout =
-  'text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-900 text-gray-100 top-0 transition duration-150 px-2 pb-4 pt-14'
-
 export default {
   data() {
     return {
@@ -108,11 +106,6 @@ export default {
     }
   },
   computed: {
-    popoutclass() {
-      const x = this.$store.state.content.isPoppedout
-
-      return `${popout} ${!x ? 'opacity-0 pointer-events-none' : ''}`
-    },
     poppedout() {
       return this.$store.state.content.isPoppedout
     },
@@ -120,18 +113,26 @@ export default {
   watch: {
     poppedout(val) {
       if (val && this.target && this.target.querySelector('i')) {
-        anime({
+        this.$anime({
           targets: this.target.querySelector('i'),
           left: '-25%',
           duration: 0,
         })
 
-        anime({
+        this.$anime({
           targets: this.target.querySelector('span'),
           opacity: 1,
           duration: 0,
         })
       }
+
+      this.$refs.popout.style.pointerEvents = val ? 'auto' : 'none'
+      this.$anime({
+        targets: this.$refs.popout,
+        opacity: val ? 1 : 0,
+        duration: 150,
+        easing: 'cubicBezier(.5, .05, .1, .3)',
+      })
     },
   },
   methods: {
@@ -144,14 +145,14 @@ export default {
 
       if (this.$route.path === target.getAttribute('href')) {
         if (target.querySelector('i')) {
-          anime({
+          this.$anime({
             targets: target.querySelector('i'),
             left: '25%',
             duration: 150,
             direction: 'alternate',
             easing: 'cubicBezier(.5, .05, .1, .3)',
           })
-          anime({
+          this.$anime({
             targets: target.querySelector('span'),
             opacity: 0.75,
             duration: 150,
@@ -176,13 +177,13 @@ export default {
       }
 
       if (target.querySelector('i')) {
-        anime({
+        this.$anime({
           targets: target.querySelector('i'),
           left: '125%',
           duration: 350,
           easing: 'cubicBezier(.5, .05, .1, .3)',
         })
-        anime({
+        this.$anime({
           targets: target.querySelector('span'),
           opacity: 0,
           duration: 350,

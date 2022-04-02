@@ -1,18 +1,15 @@
 <template>
-  <div class="w-screen h-screen overflow-hidden">
-    <div
-      ref="paddingdiv"
-      :class="toppadding + ' w-screen transition-all'"
-    ></div>
+  <div class="w-screen h-screen overflow-hidden font-light">
+    <div ref="paddingdiv" class="h-14 md:h-20 w-screen"></div>
 
     <main
-      ref="main"
       class="w-screen h-screen overflow-x-hidden dark:text-gray-100"
+      @scroll="scrollEvent"
     >
       <slot class="overflow-y-auto" keep-alive />
     </main>
 
-    <span :class="scrolltotopclass" @click="scrolltotop">
+    <span :class="scrolltotopclass + ' md:hidden'" @click="scrolltotop">
       <i class="ri-arrow-up-line text-gray-100"></i>
     </span>
 
@@ -23,8 +20,6 @@
 </template>
 
 <script>
-const anime = require('animejs');
-
 import thememode from '../scripts/thememode'
 
 const scrolltotopclass =
@@ -43,7 +38,6 @@ export default {
         scrolltotopclass + ' opacity-0 bg-primary pointer-events-none',
       hidescrollnum: 0,
       lastscrolledy: 0,
-      toppadding: 'h-14 sm:h-20 w-screen',
     }
   },
   computed: {
@@ -53,28 +47,24 @@ export default {
   },
   watch: {
     hidenavbar(val) {
-      const paddingdivHeight = this.$refs.paddingdiv.offsetHeight
+      const navbarHeight = document.querySelector('nav').offsetHeight
 
-      anime({
+      this.$anime({
         targets: this.$refs.paddingdiv,
-        translateY: val ? -paddingdivHeight : 0,
+        height: val ? 0 : navbarHeight,
         duration: 250,
+        easing: 'cubicBezier(0.4, 0, 0.2, 1)',
       })
     },
   },
   mounted() {
     thememode()
 
-    this.$refs.main.addEventListener('scroll', this.scrollEvent)
-
     if (location.hash && document.querySelector(location.hash)) {
       document.querySelector(location.hash).scrollIntoView({
         behavior: 'smooth',
       })
     }
-  },
-  beforeDestroy() {
-    this.$refs.main.removeEventListener('scroll', this.scrollEvent)
   },
   methods: {
     scrolltotop() {

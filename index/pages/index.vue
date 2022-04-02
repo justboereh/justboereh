@@ -1,38 +1,64 @@
 <template>
   <div>
-    <div class="w-screen relative home-home bg-fixed overflow-hidden">
-      <img
-        ref="home-image"
-        class="absolute h-full top-0 left-0"
-        :style="imagescale"
-        src="/IMG_5078_500px.webp"
-        alt=""
-      />
+    <div class="h-v14 text-center">
+      <div class="relative">
+        <div class="gttt h-72 bg-fixed bg-cover bg-center"></div>
 
-      <div
-        class="absolute w-full h-full flex flex-col items-center justify-center"
-      >
-        <p>I am</p>
-
-        <p class="text-5xl font-bold leading-none">BOE REH</p>
-
-        <div class="font-light">
-          <p>full stack web developer</p>
-        </div>
-      </div>
-
-      <div class="absolute bottom-0 w-full flex justify-center py-8">
         <span
-          class="bg-gradient-to-br from-primary to-secondary cursor-pointer px-4 py-2 rounded shadow-md"
+          class="text-4xl whitespace-nowrap translate-y-1/2 -translate-x-1/2 absolute -bottom-1 pt-0.5 leading-none left-1/2"
         >
-          see my works
+          <span class="text-gray-900 font-normal">GOOD THINGS</span>
+
+          <br />
+
+          TAKE TIME
         </span>
       </div>
     </div>
 
-    <div class="bg-red-500 h-20 w-screen relative">
-      <Nuxt-Link :class="``" to="/works">See my works</Nuxt-Link>
+    <div class="bg-gray-800 p-4">
+      <h1 class="text-2xl pb-8 text-center font-semibold">
+        these are my past projects:
+      </h1>
+
+      <div
+        v-for="worklist of works"
+        :key="worklist + 'worklist'"
+        class="flex flex-col md:flex-row gap-8"
+      >
+        <div
+          v-for="work of worklist"
+          :key="work.text"
+          :href="work.to"
+          @click="projectclick"
+        >
+          <div class="relative">
+            <img
+              :src="work.img"
+              alt="work project cover"
+              class="-z-10 rounded"
+            />
+
+            <p class="absolute px-4 bg-gray-900 z-0 rounded py-1 top-1 left-1">
+              {{ work.text }}
+            </p>
+          </div>
+
+          <div class="flex text-xs gap-2 pt-2">
+            <span
+              v-for="tag of work.tags"
+              :key="tag[0]"
+              :style="`color: ${tag[1]}`"
+            >
+              #{{ tag[0] }}
+            </span>
+          </div>
+
+          <p class="text-xs font-normal pt-1">{{ work.description }}</p>
+        </div>
+      </div>
     </div>
+
     <br />
     <br />
     <br />
@@ -40,7 +66,8 @@
     <br />
     <br />
     <br />
-    wow
+    <br />
+    <p class="text-center">:) thank you for coming here</p>
     <br />
     <br />
     <br />
@@ -48,38 +75,18 @@
     <br />
     <br />
     <br />
-    wow
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    wow
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    wow
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    wow
   </div>
 </template>
 
 <script>
-import ismobile from '../scripts/ismobile'
+import works from '../scripts/workslist'
 
 export default {
+  data() {
+    return {
+      works,
+    }
+  },
   head: {
     meta: [
       {
@@ -89,32 +96,28 @@ export default {
       },
     ],
   },
-  computed: {
-    imagescale() {
-      const lsy = this.$store.state.content.scrollTop
-      const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
+  methods: {
+    projectclick({ target }) {
+      while (!target.hasAttribute('href')) {
+        if (!target.parentNode) return
 
-      return `transform: scale(${clamp(
-        lsy / 333 + 1,
-        1,
-        1.5
-      )}); filter: blur(${clamp(
-        lsy / 25,
-        0,
-        16
-      )}px) grayscale(100%); opacity: ${clamp(1 - lsy / 444, 0, 1)}`
+        target = target.parentNode
+      }
+
+      window.open(target.getAttribute('href'), '_blank')
     },
-  },
-  mounted() {
-    if (!ismobile()) {
-      this.$refs['home-image'].src = '/IMG_5078.webp'
-    }
   },
 }
 </script>
 
 <style>
-.home-home {
-  height: calc(100vh - 3.5rem);
+.gttt {
+  background-image: url('/img/IMG_5078_500px.webp');
+}
+
+@media (min-width: 768px) {
+  .gttt {
+    background-image: url('/img/IMG_5078.jpg');
+  }
 }
 </style>

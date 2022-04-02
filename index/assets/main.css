@@ -20,7 +20,7 @@
 body {
   background-color: #f3f4f6;
   overflow: hidden;
-  font-family: Noto Sans;
+  font-family: Noto Sans Display;
   font-weight: 400;
   width: 100vw;
   height: 100vh;
@@ -35,4 +35,5 @@ body.dark {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  font-family: Noto Sans;
 }
