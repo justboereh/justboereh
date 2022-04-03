@@ -13,7 +13,7 @@
           :href="link.href"
           :target="link.target || ''"
           class="flex items-center relative"
-          @click.self="linkclicked"
+          @click="linkclicked"
         >
           <i :class="`ri-${link.icon}-line text-sm absolute -left-1/4`"></i>
           <span class="py-4">{{ link.text }}</span>
