@@ -6,10 +6,8 @@
       <span
         class="text-4xl whitespace-nowrap translate-y-1/2 -translate-x-1/2 absolute -bottom-1 pt-0.5 leading-none left-1/2"
       >
-        <span class="text-gray-900 font-normal">GOOD THINGS</span>
-
+        GOOD THINGS
         <br />
-
         TAKE TIME
       </span>
     </div>
@@ -25,12 +23,11 @@ export default {
   },
   watch: {
     scrollTop(val) {
-      console.log(val)
       this.$anime({
         targets: this.$refs.image,
-        backgroundPosition: `center -${val / 2}px`,
-        duration: 125,
-        easing: 'cubicBezier(0.4, 0, 0.2, 1)',
+        backgroundPosition: `center -${val / 5}px`,
+        duration: 0,
+        easing: 'linear',
       })
     },
   },
@@ -39,12 +36,13 @@ export default {
 
 <style>
 .gttt {
-  background-image: url('/img/IMG_5078_500px.webp');
+  background-position: center 0px;
+  background-image: url('https://i.imgur.com/1h6hrZI.jpg');
 }
 
 @media (min-width: 768px) {
   .gttt {
-    background-image: url('/img/IMG_5078.jpg');
+    background-image: url('https://i.imgur.com/1h6hrZI.jpg');
   }
 }
 </style>
