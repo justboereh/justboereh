@@ -1,6 +1,7 @@
 export const state = () => ({
   scrollTop: 0,
   isPoppedout: false,
+  blogs: [],
 })
 
 export const mutations = {
@@ -13,5 +14,14 @@ export const mutations = {
     if (typeof value !== 'boolean') return
 
     state.isPoppedout = value
+  },
+  blogsAdd(state, value) {
+    if (typeof value !== 'object') return
+    if (state.blogs.some((x) => x.id === value.id)) return
+
+    state.blogs.push(value)
+  },
+  blogsSet(state, value) {
+    state.blogs = value
   },
 }

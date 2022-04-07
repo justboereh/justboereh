@@ -7,13 +7,13 @@
       <img
         src="/img/logo-long.svg"
         alt="long version of logo"
-        class="h-8 px-2 hidden sm:block"
+        class="h-8 px-3 hidden sm:block"
         @click="gohome"
       />
       <img
         src="/img/logo-short-white.svg"
         alt="short version of logo"
-        class="h-6 px-2 sm:hidden"
+        class="h-6 px-3 sm:hidden"
         @click="gohome"
       />
 
@@ -58,9 +58,6 @@ export default {
   },
 
   methods: {
-    popoutshown() {
-      return this.$store.state.topbar.showPopout
-    },
     menuclicked() {
       this.$store.commit(
         'content/isPoppedout',

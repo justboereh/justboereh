@@ -1,17 +1,15 @@
 <template>
-  <div class="w-screen h-screen overflow-hidden font-light">
+  <div class="w-screen h-screen top-0 overflow-hidden font-light">
     <div ref="paddingdiv" class="h-14 md:h-20 w-screen"></div>
 
     <main
-      class="w-screen h-screen overflow-x-hidden dark:text-gray-100"
+      id="main-content"
+      ref="main"
+      class="w-screen h-screen overflow-x-hidden dark:text-gray-100 scroll-smooth main-main"
       @scroll="scrollEvent"
     >
       <slot class="overflow-y-auto" keep-alive />
     </main>
-
-    <span :class="scrolltotopclass + ' md:hidden'" @click="scrolltotop">
-      <i class="ri-arrow-up-line text-gray-100"></i>
-    </span>
 
     <PopoutMobile />
 
@@ -22,9 +20,6 @@
 <script>
 import thememode from '../scripts/thememode'
 
-const scrolltotopclass =
-  'absolute bottom-0 right-0 m-2 px-2 py-1 rounded-lg transition duration-200'
-
 export default {
   props: {
     homepage: {
@@ -34,9 +29,6 @@ export default {
   },
   data() {
     return {
-      scrolltotopclass:
-        scrolltotopclass + ' opacity-0 bg-primary pointer-events-none',
-      hidescrollnum: 0,
       lastscrolledy: 0,
     }
   },
@@ -67,32 +59,13 @@ export default {
     }
   },
   methods: {
-    scrolltotop() {
-      this.$refs.main.scrollTo(0, 0)
-    },
     scrollEvent({ target }) {
-      const newscrollnum = Math.random()
-      this.hidescrollnum = newscrollnum
-
       this.$store.commit('content/scrollTop', target.scrollTop)
-
-      setTimeout(() => {
-        if (newscrollnum !== this.hidescrollnum || target.scrollTop < 80) return
-        this.scrolltotopclass = `${scrolltotopclass} bg-primary/10`
-      }, 2000)
-
-      this.scrolltotopclass = `${scrolltotopclass} ${
-        target.scrollTop >= 80 ? 'bg-primary' : 'opacity-0 pointer-events-none'
-      }`
 
       if (target.scrollTop - this.lastscrolledy <= 0 || target.scrollTop < 1) {
         this.$store.commit('topbar/setHide', false)
-
-        this.toppadding = 'h-14 sm:h-20'
       } else {
         this.$store.commit('topbar/setHide', true)
-
-        this.toppadding = 'h-0'
       }
 
       this.lastscrolledy = target.scrollTop
@@ -100,3 +73,21 @@ export default {
   },
 }
 </script>
+
+<style>
+@media (min-width: 640px) {
+  .main-main {
+    scrollbar-width: thin;
+    scrollbar-color: #f79226;
+  }
+
+  .main-main::-webkit-scrollbar {
+    width: 0.69rem;
+  }
+}
+
+.main-main::-webkit-scrollbar-thumb {
+  background-color: #f79226;
+  border-radius: 0.25rem;
+}
+</style>

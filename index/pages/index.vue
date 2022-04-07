@@ -11,14 +11,7 @@
     <br />
     <br />
     <br />
-    <p class="text-center">:) thank you for coming here</p>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <End>thank you for coming 💚</End>
   </div>
 </template>
 

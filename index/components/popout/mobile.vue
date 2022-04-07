@@ -21,29 +21,14 @@
       </div>
 
       <div class="grow"></div>
+      <div class="grow"></div>
 
       <div class="mx-1 py-2 flex justify-evenly">
         <span
-          class="ri-github-fill"
-          href="http://github.com/justboereh"
-          target="_blank"
-          @click="linkclicked"
-        ></span>
-        <span
-          class="ri-youtube-fill"
-          href="http://youtube.com/justboereh"
-          target="_blank"
-          @click="linkclicked"
-        ></span>
-        <span
-          class="ri-soundcloud-fill"
-          href="http://soundcloud.com/justboereh"
-          target="_blank"
-          @click="linkclicked"
-        ></span>
-        <span
-          class="ri-twitter-fill"
-          href="http://twitter.com/justboereh"
+          v-for="social in socials"
+          :key="social[1]"
+          :class="`ri-${social[0]}-fill`"
+          :href="social[1]"
           target="_blank"
           @click="linkclicked"
         ></span>
@@ -57,7 +42,6 @@
       </div>
 
       <div class="grow"></div>
-      <div class="grow"></div>
 
       <div
         class="mx-6 p-0.5 bg-gradient-to-br from-primary to-secondary border border-gray-100/5 rounded-sm text-center"
@@ -66,6 +50,8 @@
       >
         <div class="w-full h-full bg-gray-900 rounded-sm py-4">contact me</div>
       </div>
+
+      <div class="grow"></div>
     </div>
   </div>
 </template>
@@ -102,6 +88,14 @@ export default {
           icon: 'tools',
           text: 'just tools',
         },
+      ],
+      socials: [
+        ['github', 'http://github.com/justboereh'],
+        ['youtube', '//youtube.com/justboereh'],
+        ['soundcloud', 'http://soundcloud.com/justboereh'],
+        ['twitter', 'http://twitter.com/justboereh'],
+        ['snapchat', 'https://www.snapchat.com/add/justboereh'],
+        ['instagram', 'http://instgram.com/justboereh'],
       ],
     }
   },

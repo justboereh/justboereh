@@ -32,6 +32,7 @@ if ($_GET && isset($_GET['tags'])) {
 	$filterstr .= ' tags in(' . substr($imploded, 0, -2) . ')';
 }
 
+
 $return = [];
 
 foreach (R::findAll('blogs', $filterstr) as $blog){

@@ -7,7 +7,7 @@
     <div
       v-for="worklist of works"
       :key="worklist + 'worklist'"
-      class="flex flex-col md:flex-row gap-8"
+      class="flex flex-col md:flex-row gap-4"
     >
       <div
         v-for="work of worklist"
@@ -18,12 +18,14 @@
         <div class="relative">
           <img :src="work.img" alt="work project cover" class="-z-10 rounded" />
 
-          <p class="absolute px-4 bg-gray-800/50 z-0 rounded py-1 top-1 left-1">
+          <p
+            class="absolute px-4 bg-gray-800/90 z-0 rounded py-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
             {{ work.text }}
           </p>
         </div>
 
-        <div class="flex text-xs gap-2 pt-2">
+        <div class="flex items-center text-xs gap-2 pt-2">
           <span
             v-for="tag of work.tags"
             :key="tag[0]"
@@ -32,10 +34,6 @@
             #{{ tag[0] }}
           </span>
         </div>
-
-        <p class="text-xs font-normal pt-1">{{ work.description }}</p>
-
-        <hr class="border-gray-700/75 mt-2" />
       </div>
     </div>
   </div>
