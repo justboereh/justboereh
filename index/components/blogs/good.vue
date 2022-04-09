@@ -1,18 +1,20 @@
 <template>
   <div class="text-center pb-10">
-    <div ref="image" class="gttt h-52 bg-cover bg-no-repeat bg-top relative">
+    <div ref="image" class="gttt h-52 bg-no-repeat bg-top relative">
       <span
-        class="text-4xl whitespace-nowrap -translate-x-1/2 absolute -bottom-1 pt-0.5 leading-none left-1/2"
+        class="text-4xl whitespace-nowrap text-gray-100 -translate-x-1/2 absolute -bottom-1 pt-0.5 leading-none left-1/2"
       >
         GOOD BLOGS
       </span>
     </div>
 
-    <p class="text-xs opacity-50">read blogs by justboereh</p>
+    <span class="text-xs rbbjbr">read blogs by justboereh</span>
   </div>
 </template>
 
 <script>
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
+
 export default {
   computed: {
     scrollTop() {
@@ -23,7 +25,7 @@ export default {
     scrollTop(val) {
       this.$anime({
         targets: this.$refs.image,
-        backgroundPosition: `center -${val / 2}px`,
+        backgroundPosition: `center ${clamp(val / 10 + 50, 0, 100)}%`,
         duration: 0,
         easing: 'linear',
       })
@@ -34,13 +36,30 @@ export default {
 
 <style>
 .gttt {
-  background-position: center 0px;
-  background-image: url('https://i.imgur.com/1h6hrZI.jpg');
+  background-position: center 50%;
+  background-image: url('https://i.imgur.com/RXBEBGY.jpg');
 }
 
 @media (min-width: 768px) {
   .gttt {
-    background-image: url('https://i.imgur.com/1h6hrZI.jpg');
+    background-image: url('https://i.imgur.com/RXBEBGY.jpg');
   }
+}
+
+@keyframes color {
+  0% {
+    color: #f79226;
+  }
+  50% {
+    color: #ee2d30;
+  }
+  100% {
+    color: #f79226;
+  }
+}
+
+.rbbjbr {
+  animation: color 9s infinite linear;
+  color: #f79226;
 }
 </style>

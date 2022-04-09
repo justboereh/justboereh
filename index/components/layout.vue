@@ -5,7 +5,7 @@
     <main
       id="main-content"
       ref="main"
-      class="w-screen h-screen overflow-x-hidden dark:text-gray-100 scroll-smooth main-main"
+      class="w-screen h-screen overflow-x-hidden scroll-smooth main-main"
       @scroll="scrollEvent"
     >
       <slot class="overflow-y-auto" keep-alive />
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import thememode from '../scripts/thememode'
-
 export default {
   props: {
     homepage: {
@@ -50,8 +48,6 @@ export default {
     },
   },
   mounted() {
-    thememode()
-
     if (location.hash && document.querySelector(location.hash)) {
       document.querySelector(location.hash).scrollIntoView({
         behavior: 'smooth',

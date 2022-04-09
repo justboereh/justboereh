@@ -29,7 +29,7 @@ export const getBlogs = function (errorcallback, id) {
         const ntags = []
 
         for (const tag of x.tags) {
-          ntags.push([tag.trim(), randomcolor(true)])
+          ntags.push([tag.trim(), randomcolor()])
         }
 
         x.tags = ntags

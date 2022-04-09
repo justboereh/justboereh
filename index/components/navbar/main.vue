@@ -1,7 +1,7 @@
 <template>
   <nav
     ref="navbar"
-    class="'bg-gray-900 text-gray-100 w-screen top-0 h-14 md:h-20 fixed border-b transition duration-200 bg-gray-900 border-gray-800 transform"
+    class="'w-screen top-0 h-14 md:h-20 fixed border-b border-gray-300"
   >
     <div class="flex w-screen h-full items-center px-1">
       <img
@@ -11,7 +11,7 @@
         @click="gohome"
       />
       <img
-        src="/img/logo-short-white.svg"
+        src="/img/logo-short.svg"
         alt="short version of logo"
         class="h-6 px-3 sm:hidden"
         @click="gohome"
@@ -38,7 +38,7 @@ export default {
 
       return `${
         popoutshown ? 'ri-close-line' : 'ri-menu-line'
-      } px-2 py-1 transition duration-200 delay-100 sm:hidden`
+      } px-2 py-1 transition duration-200 delay-100 sm:hidden text-secondary navbarmenu`
     },
     hide() {
       return this.$store.state.topbar.hide
@@ -52,7 +52,7 @@ export default {
         targets: this.$refs.navbar,
         top: val ? -navbarHeight : 0,
         duration: 250,
-        easing: 'cubicBezier(.5, .05, .1, .3)',
+        easing: 'cubicBezier(0.4, 0, 0.2, 1)',
       })
     },
   },
@@ -72,3 +72,21 @@ export default {
   },
 }
 </script>
+
+<style>
+@keyframes color {
+  0% {
+    color: #f79226;
+  }
+  50% {
+    color: #ee2d30;
+  }
+  100% {
+    color: #f79226;
+  }
+}
+
+.navbarmenu::before {
+  animation: color 9s infinite linear;
+}
+</style>

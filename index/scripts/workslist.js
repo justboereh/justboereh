@@ -15,8 +15,8 @@ export default [
     {
       to: 'https://github.com/justboereh/armato',
       tags: [
-        ['Javascript', randomcolor(true)],
-        ['NodeJS', randomcolor(true)],
+        ['Javascript', randomcolor()],
+        ['NodeJS', randomcolor()],
       ],
       text: 'armato',
       img: 'https://i.imgur.com/G5EBWrj.jpg',
@@ -25,7 +25,7 @@ export default [
     },
     {
       to: 'https://github.com/justboereh/rnm',
-      tags: [['Lua', randomcolor(true)]],
+      tags: [['Lua', randomcolor()]],
       text: 'rnm',
       img: 'https://i.imgur.com/860OWOv.jpg',
       description: 'Number Module is a module for working with numbers in Lua.',
@@ -33,9 +33,9 @@ export default [
     {
       to: 'https://github.com/justboereh/justboereh',
       tags: [
-        ['VueJS', randomcolor(true)],
-        ['Javascript', randomcolor(true)],
-        ['PHP', randomcolor(true)],
+        ['VueJS', randomcolor()],
+        ['Javascript', randomcolor()],
+        ['PHP', randomcolor()],
       ],
       text: 'justboereh.com',
       img: 'https://i.imgur.com/860OWOv.jpg',

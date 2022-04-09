@@ -1,7 +1,7 @@
 <template>
   <div
     ref="popout"
-    class="text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-900 opacity-0 text-gray-100 top-0 px-2 pb-4 pt-14 pointer-events-none"
+    class="text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-100 opacity-0 text-gray-600 top-0 px-2 pb-4 pt-14 pointer-events-none"
   >
     <div class="flex flex-col h-full overflow-y-auto">
       <div class="grow"></div>
@@ -32,6 +32,7 @@
           target="_blank"
           @click="linkclicked"
         ></span>
+
         <span
           href="http://tiktok.com/@justboereh"
           target="_blank"
@@ -48,7 +49,7 @@
         href="/#contact"
         @click="linkclicked"
       >
-        <div class="w-full h-full bg-gray-900 rounded-sm py-4">contact me</div>
+        <div class="w-full h-full bg-gray-100 rounded-sm py-4">contact me</div>
       </div>
 
       <div class="grow"></div>

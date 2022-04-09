@@ -1,7 +1,9 @@
 <template>
-  <p class="py-8 text-center text-sm -z-10 theendtext relative">
+  <span
+    class="py-8 text-center text-sm -z-10 theendtext relative text-gray-100"
+  >
     <slot></slot>
-  </p>
+  </span>
 </template>
 
 <style scoped>
