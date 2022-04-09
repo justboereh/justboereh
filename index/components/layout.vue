@@ -71,6 +71,18 @@ export default {
 </script>
 
 <style>
+@keyframes color {
+  0% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #ee2d30;
+  }
+  100% {
+    background-color: #f79226;
+  }
+}
+
 @media (min-width: 640px) {
   .main-main {
     scrollbar-width: thin;
@@ -83,6 +95,7 @@ export default {
 }
 
 .main-main::-webkit-scrollbar-thumb {
+  animation: color 5s infinite linear;
   background-color: #f79226;
   border-radius: 0.25rem;
 }

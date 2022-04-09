@@ -29,6 +29,8 @@ export const getBlogs = function (errorcallback, id) {
         const ntags = []
 
         for (const tag of x.tags) {
+          if (tag.trim() === '') continue
+
           ntags.push([tag.trim(), randomcolor()])
         }
 
@@ -38,8 +40,18 @@ export const getBlogs = function (errorcallback, id) {
 
         this.$store.commit('content/blogsAdd', x)
       }
+
+      if (this.$store.state.content.blogs.length > 0) {
+        localStorage.setItem(
+          'blogs:downloaded',
+          JSON.stringify({
+            lastfectched: Date.now(),
+            data: this.$store.state.content.blogs,
+          })
+        )
+      }
     } catch (_) {
-      errorcallback()
+      errorcallback(_)
     }
   }
 
@@ -60,8 +72,20 @@ export const getBlogs = function (errorcallback, id) {
       return
     }
 
-    blogsobj.data.forEach((x) => this.$store.commit('content/blogsAdd', x))
+    blogsobj.data.forEach((x) => {
+      if (x.lastfectched + 86400000 <= Date.now()) {
+        id = x.id
+
+        request()
+
+        return
+      }
+
+      this.$store.commit('content/blogsAdd', x)
+    })
+
+    if (!blogsobj.data.some((x) => x.id === id)) request()
   } catch (_) {
-    errorcallback()
+    errorcallback(_)
   }
 }

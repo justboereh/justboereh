@@ -25,8 +25,6 @@ const WHExtend = ({ theme }) => {
     extend[`p${t}`] = `calc(100% - ${temp[t]}rem)`
   }
 
-  for (let index = 1; index < 15; index++) {}
-
   for (let index = 16; index < 76; index += 4) {
     extend[`v${index}`] = `calc(100vh - ${(index - 16) / 4 + 3}rem)`
     extend[`p${index}`] = `calc(100% - ${(index - 16) / 4 + 3}rem)`

@@ -2,6 +2,7 @@ export const state = () => ({
   scrollTop: 0,
   isPoppedout: false,
   blogs: [],
+  blogssort: '',
 })
 
 export const mutations = {

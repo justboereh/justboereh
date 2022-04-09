@@ -1,9 +1,9 @@
 <template>
-  <span
+  <div
     class="py-8 text-center text-sm -z-10 theendtext relative text-gray-100"
   >
     <slot></slot>
-  </span>
+  </div>
 </template>
 
 <style scoped>

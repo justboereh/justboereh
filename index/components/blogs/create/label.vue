@@ -42,11 +42,9 @@ export default {
   },
   methods: {
     slotfocused() {
-      console.log(true)
       this.labelfocused = true
     },
     slotblured() {
-      console.log(false)
       this.labelfocused = false
     },
   },
