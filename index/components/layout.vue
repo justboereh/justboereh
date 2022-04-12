@@ -99,4 +99,21 @@ export default {
   background-color: #f79226;
   border-radius: 0.25rem;
 }
+
+@keyframes color {
+  0% {
+    color: #f79226;
+  }
+  50% {
+    color: #ee2d30;
+  }
+  100% {
+    color: #f79226;
+  }
+}
+
+.textprisec {
+  animation: color 9s infinite linear;
+  color: #f79226;
+}
 </style>

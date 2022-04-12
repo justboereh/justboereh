@@ -25,14 +25,8 @@
           </p>
         </div>
 
-        <div class="flex items-center text-xs gap-2 pt-2">
-          <span
-            v-for="tag of work.tags"
-            :key="tag[0]"
-            :style="`color: ${tag[1]}`"
-          >
-            #{{ tag[0] }}
-          </span>
+        <div class="flex items-center text-xs gap-2 pt-2 textprisec">
+          <span v-for="tag of work.tags" :key="tag"> #{{ tag }} </span>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <h1>Create a blog</h1>
+    <h1 class="font-normal text-lg">BLOG CREATION TOOL</h1>
 
     <br />
 
@@ -39,8 +39,8 @@
 export default {
   data() {
     return {
-      defclass: 'dark:text-gray-100/50 text-gray-900/50',
-      focusclass: 'dark:text-gray-100 text-gray-900',
+      defclass: 'opacity-50',
+      focusclass: 'opacity-100',
       bodyvalue: '',
       titlevalue: '',
       tagsvalue: [],

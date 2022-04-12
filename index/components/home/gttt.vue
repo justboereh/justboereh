@@ -8,7 +8,7 @@
       >
         GOOD THINGS
         <br />
-        <span class="taketime">TAKE TIME</span>
+        <span class="textprisec">TAKE TIME</span>
       </span>
     </div>
   </div>
@@ -46,21 +46,5 @@ export default {
   .gttt {
     background-image: url('https://i.imgur.com/RXBEBGY.jpg');
   }
-}
-
-@keyframes color {
-  0% {
-    color: #f79226;
-  }
-  50% {
-    color: #ee2d30;
-  }
-  100% {
-    color: #f79226;
-  }
-}
-
-.taketime {
-  animation: color 9s infinite linear;
 }
 </style>

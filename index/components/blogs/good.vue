@@ -8,7 +8,7 @@
       </span>
     </div>
 
-    <span class="text-xs rbbjbr">read blogs by justboereh</span>
+    <span class="text-xs textprisec">read blogs by justboereh</span>
   </div>
 </template>
 
@@ -44,22 +44,5 @@ export default {
   .gttt {
     background-image: url('https://i.imgur.com/RXBEBGY.jpg');
   }
-}
-
-@keyframes color {
-  0% {
-    color: #f79226;
-  }
-  50% {
-    color: #ee2d30;
-  }
-  100% {
-    color: #f79226;
-  }
-}
-
-.rbbjbr {
-  animation: color 9s infinite linear;
-  color: #f79226;
 }
 </style>

@@ -1,25 +1,25 @@
 <template>
   <div>
     <div
-      :class="`flex items-center text-xs pb-1 pt-4 gap-2 transition ${labelclass}`"
+      :class="`flex items-center text-xs pb-1 pt-4 gap-2 transition text-gray-900 ${labelclass}`"
     >
       Tags
-      <span class="w-full h-px bg-gray-700"></span>
+      <span class="w-full h-px bg-gray-500"></span>
     </div>
 
     <div
-      class="flex bg-gray-800/50 border focus-within:border-gray-700 border-gray-700/0 text-sm rounded-sm p-2 gap-2"
+      class="flex border-transparent border focus-within:border-gray-400 bg-gray-300 text-sm rounded-sm p-2 gap-2"
       @click.self="clicked"
     >
       <span
         v-for="tag of tags"
-        :key="tag[0]"
-        class="bg-gray-800 px-2 flex justify-center rounded-sm tagsclass"
+        :key="tag"
+        class="bg-gray-200 px-2 flex justify-center rounded-sm tagsclass"
       >
-        <p :style="`color: ${tag[1]}`">#{{ tag[0] }}</p>
+        <p class="textprisec">#{{ tag }}</p>
         <i
           class="ri-close-line opacity-75 focus:opacity-100 pl-1"
-          :name="tag[0]"
+          :name="tag"
           @click="tagdeleteclick"
         ></i>
       </span>
@@ -65,18 +65,14 @@ export default {
     },
   },
   methods: {
-    randomcolor(below155) {
-      return (
-        'rgb(' +
-        Math.floor(100 * Math.random() + (!below155 ? 155 : 0)) +
-        ',' +
-        Math.floor(100 * Math.random() + (!below155 ? 155 : 0)) +
-        ',' +
-        Math.floor(100 * Math.random() + (!below155 ? 155 : 0)) +
-        ')'
-      )
-    },
     focused() {
+      if (this.tags.length > 2) {
+        this.$refs.input.blur()
+        this.$refs.input.value = ''
+
+        return
+      }
+
       this.labelfocused = true
     },
     blured() {
@@ -88,18 +84,18 @@ export default {
       this.$refs.input.focus()
     },
     tagdeleteclick({ target }) {
-      this.tags = this.tags.filter((x) => x[0] !== target.getAttribute('name'))
+      this.tags = this.tags.filter((x) => x !== target.getAttribute('name'))
     },
     inputed({ data }) {
       if (data !== ' ') return
       const trimVal = this.$refs.input.value.trim()
 
-      if (this.tags.some((x) => x[0] === trimVal)) {
+      if (this.tags.includes(trimVal)) {
         this.$refs.input.value = trimVal
 
         return
       }
-      this.tags.push([trimVal, this.randomcolor()])
+      this.tags.push(trimVal)
 
       this.$refs.input.value = ''
 

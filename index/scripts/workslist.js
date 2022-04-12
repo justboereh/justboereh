@@ -1,23 +1,8 @@
-function randomcolor(above155) {
-  return (
-    'rgb(' +
-    Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
-    ',' +
-    Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
-    ',' +
-    Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
-    ')'
-  )
-}
-
 export default [
   [
     {
       to: 'https://github.com/justboereh/armato',
-      tags: [
-        ['Javascript', randomcolor()],
-        ['NodeJS', randomcolor()],
-      ],
+      tags: ['Javascript', 'NodeJS'],
       text: 'armato',
       img: 'https://i.imgur.com/G5EBWrj.jpg',
       description:
@@ -25,18 +10,14 @@ export default [
     },
     {
       to: 'https://github.com/justboereh/rnm',
-      tags: [['Lua', randomcolor()]],
+      tags: ['Lua'],
       text: 'rnm',
       img: 'https://i.imgur.com/860OWOv.jpg',
       description: 'Number Module is a module for working with numbers in Lua.',
     },
     {
       to: 'https://github.com/justboereh/justboereh',
-      tags: [
-        ['VueJS', randomcolor()],
-        ['Javascript', randomcolor()],
-        ['PHP', randomcolor()],
-      ],
+      tags: ['VueJS', 'Javascript', 'PHP'],
       text: 'justboereh.com',
       img: 'https://i.imgur.com/860OWOv.jpg',
       description: 'My very own personal website.',

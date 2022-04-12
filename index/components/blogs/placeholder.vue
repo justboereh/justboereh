@@ -6,7 +6,7 @@
       <i class="ri-image-line ri-3x opacity-50"></i>
     </div>
 
-    <div class="flex items-center p-2">
+    <div class="flex items-center p-2 pt-4">
       <h1 class="bg-gray-400 w-8 h-3"></h1>
 
       <span class="grow"></span>

@@ -22,6 +22,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    placeholder: {
+      type: Boolean,
+      default: () => false,
+    },
+  },
+}
+</script>
+
 <style scoped>
 @keyframes color {
   0% {

@@ -5,18 +5,6 @@ const baseurl =
 
 const nameOfLS = 'blogs:downloaded'
 
-const randomcolor = (above155) => {
-  return (
-    'rgb(' +
-    Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
-    ',' +
-    Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
-    ',' +
-    Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
-    ')'
-  )
-}
-
 export const getBlogs = function (errorcallback, id) {
   if (!localStorage || !this) return null
 
@@ -31,7 +19,7 @@ export const getBlogs = function (errorcallback, id) {
         for (const tag of x.tags) {
           if (tag.trim() === '') continue
 
-          ntags.push([tag.trim(), randomcolor()])
+          ntags.push(tag.trim())
         }
 
         x.tags = ntags

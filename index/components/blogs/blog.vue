@@ -6,17 +6,13 @@
       class="-z-10 aspect-video rounded-sm"
     />
 
-    <div class="flex md:text-lg p-2">
-      <h1 class="opacity-50">
+    <div class="flex md:text-lg p-2 pt-4">
+      <h1
+        v-if="abstrnumsame(blog.timeposted, blog.timeupdated)"
+        class="opacity-50"
+      >
         {{ timestr(blog.timeposted) }}
       </h1>
-
-      <span
-        v-if="!abstrnumsame(blog.timeposted, blog.timeupdated)"
-        class="opacity-50 px-1"
-      >
-        •
-      </span>
 
       <h1
         v-if="!abstrnumsame(blog.timeposted, blog.timeupdated)"
@@ -28,8 +24,8 @@
       <span class="grow"></span>
 
       <div class="flex gap-2">
-        <span v-for="tag of blog.tags" :key="tag[0]" class="text-secondary">
-          #{{ tag[0] }}
+        <span v-for="tag of blog.tags" :key="tag" class="textprisec">
+          #{{ tag }}
         </span>
       </div>
     </div>
@@ -61,7 +57,7 @@ export default {
       return `/blogs/${id}-${title}`
     },
     timestr(str) {
-      return dayjs(Number(str)).format('MMM D')
+      return dayjs(Number(str)).format('MMM D YYYY')
     },
     abstrnumsame(a, b) {
       return Number(a) === Number(b)

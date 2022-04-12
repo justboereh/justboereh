@@ -42,6 +42,8 @@
     <div v-show="loading">
       <BlogsGood />
 
+      <BlogsFilters placeholder />
+
       <div
         class="grid gap-8 md:grid-cols-2 xl:grid-cols-3 md:place-content-evenly xl:mx-1/4"
       >
