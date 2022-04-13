@@ -1,7 +1,7 @@
 <template>
   <div
     ref="popout"
-    class="text-2xl font-light overflow-y-auto absolute w-screen h-screen bg-gray-100 opacity-0 text-gray-600 top-0 px-2 pb-4 pt-14 pointer-events-none"
+    class="text-2xl font-light overflow-y-auto absolute w-full h-screen bg-gray-100 opacity-0 text-gray-600 top-0 px-2 pb-4 pt-14 pointer-events-none"
   >
     <div class="flex flex-col h-full overflow-y-auto">
       <div class="grow"></div>
@@ -13,6 +13,7 @@
           :href="link.href"
           :target="link.target || ''"
           class="flex items-center relative"
+          tabindex="0"
           @click="linkclicked"
         >
           <i :class="`ri-${link.icon}-line text-sm absolute -left-1/4`"></i>
@@ -30,12 +31,14 @@
           :class="`ri-${social[0]}-fill`"
           :href="social[1]"
           target="_blank"
+          tabindex="0"
           @click="linkclicked"
         ></span>
 
         <span
           href="http://tiktok.com/@justboereh"
           target="_blank"
+          tabindex="0"
           @click="linkclicked"
         >
           tiktok
@@ -47,6 +50,7 @@
       <div
         class="mx-6 p-0.5 bg-gradient-to-br from-primary to-secondary border border-gray-100/5 rounded-sm text-center"
         href="/#contact"
+        tabindex="0"
         @click="linkclicked"
       >
         <div class="w-full h-full bg-gray-100 rounded-sm py-4">contact me</div>

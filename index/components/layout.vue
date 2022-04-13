@@ -1,14 +1,9 @@
 <template>
-  <div class="w-screen h-screen top-0 overflow-hidden font-light">
-    <div ref="paddingdiv" class="h-14 md:h-20 w-screen"></div>
+  <div ref="main" class="top-0 font-light">
+    <main id="main-content" ref="main" class="main-main">
+      <div ref="paddingdiv" class="h-14 md:h-20 w-full"></div>
 
-    <main
-      id="main-content"
-      ref="main"
-      class="w-screen h-screen overflow-x-hidden scroll-smooth main-main"
-      @scroll="scrollEvent"
-    >
-      <slot class="overflow-y-auto" keep-alive />
+      <slot keep-alive />
     </main>
 
     <PopoutMobile />
@@ -37,14 +32,7 @@ export default {
   },
   watch: {
     hidenavbar(val) {
-      const navbarHeight = document.querySelector('nav').offsetHeight
-
-      this.$anime({
-        targets: this.$refs.paddingdiv,
-        height: val ? 0 : navbarHeight,
-        duration: 250,
-        easing: 'cubicBezier(0.4, 0, 0.2, 1)',
-      })
+      this.doheightadjustment(val)
     },
   },
   mounted() {
@@ -53,18 +41,42 @@ export default {
         behavior: 'smooth',
       })
     }
+
+    const resizenavbar = () => {
+      document.querySelector('#nav').style.width =
+        document.documentElement.clientWidth + 'px'
+    }
+    window.addEventListener('resize', resizenavbar)
+
+    resizenavbar()
+
+    document.addEventListener('scroll', this.scrollEvent)
+
+    this.doheightadjustment(false)
   },
   methods: {
-    scrollEvent({ target }) {
+    scrollEvent() {
+      const target = document.documentElement
+
       this.$store.commit('content/scrollTop', target.scrollTop)
 
-      if (target.scrollTop - this.lastscrolledy <= 0 || target.scrollTop < 1) {
-        this.$store.commit('topbar/setHide', false)
-      } else {
-        this.$store.commit('topbar/setHide', true)
-      }
+      const ybelowlast = target.scrollTop - this.lastscrolledy >= 0
+      const ybelownavheight =
+        target.scrollTop > document.querySelector('#nav').offsetHeight
+
+      this.$store.commit('topbar/setHide', ybelowlast && ybelownavheight)
 
       this.lastscrolledy = target.scrollTop
+    },
+    doheightadjustment(val) {
+      const navbarHeight = document.querySelector('#nav').offsetHeight
+
+      this.$anime({
+        targets: this.$refs.main,
+        height: `calc(100vh - ${val ? 0 : navbarHeight}px)`,
+        duration: 250,
+        easing: 'cubicBezier(0.4, 0, 0.2, 1)',
+      })
     },
   },
 }

@@ -13,6 +13,7 @@
         v-for="work of worklist"
         :key="work.text"
         :href="work.to"
+        tabindex="5"
         @click="projectclick"
       >
         <div class="relative">

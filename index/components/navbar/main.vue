@@ -1,27 +1,30 @@
 <template>
-  <nav
+  <div
+    id="nav"
     ref="navbar"
-    class="'w-screen top-0 h-14 md:h-20 fixed border-b border-gray-300"
+    class="'w-full top-0 h-14 md:h-20 fixed border-b bg-gray-100 border-gray-300"
   >
-    <div class="flex w-screen h-full items-center px-1">
+    <div class="flex w-full h-full items-center px-1">
       <img
         src="/img/logo-long.svg"
         alt="long version of logo"
         class="h-8 px-3 hidden sm:block"
+        tabindex="0"
         @click="gohome"
       />
       <img
         src="/img/logo-short.svg"
         alt="short version of logo"
         class="h-6 px-3 sm:hidden"
+        tabindex="0"
         @click="gohome"
       />
 
       <span class="flex-1"></span>
 
-      <span :class="navbarmenuclass" @click="menuclicked"></span>
+      <span :class="navbarmenuclass" tabindex="0" @click="menuclicked"></span>
     </div>
-  </nav>
+  </div>
 </template>
 
 <script>
@@ -56,7 +59,15 @@ export default {
       })
     },
   },
+  mounted() {
+    const resizenavbar = () => {
+      this.$refs.navbar.style.width =
+        document.documentElement.clientWidth + 'px'
+    }
+    window.addEventListener('resize', resizenavbar)
 
+    resizenavbar()
+  },
   methods: {
     menuclicked() {
       this.$store.commit(
@@ -67,7 +78,7 @@ export default {
     gohome() {
       if (this.$route.path === this.homepage) return
 
-      this.$router.replace(this.homepage)
+      this.$router.push(this.homepage)
     },
   },
 }

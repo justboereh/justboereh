@@ -1,6 +1,6 @@
 <template>
   <div class="p-4">
-    <h1 class="font-normal text-lg">BLOG CREATION TOOL</h1>
+    <BlogsCreateGbct />
 
     <br />
 
