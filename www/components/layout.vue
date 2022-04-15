@@ -2,10 +2,9 @@
   <div ref="main" class="top-0 font-light">
     <div ref="paddingdiv" class="h-14 w-full"></div>
 
-    <Nuxt id="main-content" />
+    <slot id="main-content" />
 
-    <PopoutMobile />
-
+    <NavbarMobile />
     <NavbarMain :homepage="homepage" />
   </div>
 </template>
@@ -21,48 +20,48 @@ export default {
   data() {
     return {
       lastscrolledy: 0,
-    }
+    };
   },
   computed: {
     hidenavbar() {
-      return this.$store.state.topbar.hide
+      return useContent.hide;
     },
   },
   watch: {
     hidenavbar(val) {
-      this.doheightadjustment(val)
+      this.doheightadjustment(val);
     },
   },
   mounted() {
     if (location.hash && document.querySelector(location.hash)) {
       document.querySelector(location.hash).scrollIntoView({
         behavior: 'smooth',
-      })
+      });
     }
 
     const resizenavbar = () => {
       document.querySelector('#nav').style.width =
-        document.documentElement.clientWidth + 'px'
-    }
-    window.addEventListener('resize', resizenavbar)
+        document.documentElement.clientWidth + 'px';
+    };
+    window.addEventListener('resize', resizenavbar);
 
-    resizenavbar()
+    resizenavbar();
 
-    document.addEventListener('scroll', this.scrollEvent)
+    document.addEventListener('scroll', this.scrollEvent);
   },
   methods: {
     scrollEvent() {
-      const target = document.documentElement
+      const target = document.documentElement;
 
-      this.$store.commit('content/scrollTop', target.scrollTop)
+      useContent.scrolltop = target.scrollTop;
 
-      const ybelowlast = target.scrollTop - this.lastscrolledy >= 0
+      const ybelowlast = target.scrollTop - this.lastscrolledy >= 0;
       const ybelownavheight =
-        target.scrollTop > document.querySelector('#nav').offsetHeight
+        target.scrollTop > document.querySelector('#nav').offsetHeight;
 
-      this.$store.commit('topbar/setHide', ybelowlast && ybelownavheight)
+      useNavbar.hide = ybelowlast && ybelownavheight;
 
-      this.lastscrolledy = target.scrollTop
+      this.lastscrolledy = target.scrollTop;
     },
     doheightadjustment(val) {
       // const navbarHeight = document.querySelector('#nav').offsetHeight
@@ -74,7 +73,7 @@ export default {
       // })
     },
   },
-}
+};
 </script>
 
 <style>

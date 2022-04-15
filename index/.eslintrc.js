@@ -15,5 +15,6 @@ module.exports = {
     'no-new': 0,
     'v-html': 0,
     'vue/no-v-html': 0,
+    'unknownAtRules' : 0
   },
 }

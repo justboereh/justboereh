@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <Layout homepage="/blogs">
     <div v-show="!didError && !loading">
       <BlogsGood />
 
@@ -56,36 +56,33 @@
         </BlogsPlaceholder>
       </div>
     </div>
-  </div>
+  </Layout>
 </template>
 
 <script>
-import { getBlogs } from '@/scripts/blogs'
+import { getBlogs } from '@/scripts/blogs';
 
 export default {
-  layout: 'blogs',
   data() {
-    return { didError: false }
+    return { didError: false };
   },
   head: { title: 'blogs — justboereh' },
   computed: {
-    blogs() {
-      return this.$store.state.content.blogs
-    },
+    blogs: () => useContent.blogs,
     loading() {
-      return this.didError === !0 || this.blogs.length < 1
+      return this.didError === !0 || this.blogs.length < 1;
     },
   },
   mounted() {
-    getBlogs.call(this, () => (this.didError = true))
+    getBlogs.call(this, () => (this.didError = true));
   },
   methods: {
     goback() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
     gohome() {
-      this.$router.replace('/')
+      this.$router.replace('/');
     },
   },
-}
+};
 </script>

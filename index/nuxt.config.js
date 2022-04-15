@@ -17,7 +17,7 @@ export default {
         content: 'My very own personal website',
       },
       { name: 'format-detection', content: 'telephone=no' },
-      { name: 'theme-color', content: '#111827' },
+      { name: 'theme-color', content: '#f3f4f6' },
       {
         name: 'keywords',
         content:

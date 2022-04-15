@@ -35,51 +35,46 @@ export default {
   },
   computed: {
     navbarmenuclass() {
-      const popoutshown = this.$store.state.content.isPoppedout
-
       return `${
-        popoutshown ? 'ri-close-line' : 'ri-menu-line'
-      } px-2 py-1 transition duration-200 delay-100 sm:hidden text-secondary navbarmenu`
+        useNavbar.mobilenav ? 'ri-close-line' : 'ri-menu-line'
+      } px-2 py-1 sm:hidden text-secondary navbarmenu`;
     },
     hide() {
-      return this.$store.state.topbar.hide
+      return useNavbar.hide;
     },
   },
   watch: {
     hide(val) {
-      const navbarHeight = this.$refs.navbar.offsetHeight
+      const navbarHeight = this.$refs.navbar.offsetHeight;
 
-      this.$anime({
+      useAnime({
         targets: this.$refs.navbar,
         top: val ? -navbarHeight : 0,
         duration: 250,
         easing: 'cubicBezier(0.4, 0, 0.2, 1)',
-      })
+      });
     },
   },
   mounted() {
     const resizenavbar = () => {
       this.$refs.navbar.style.width =
-        document.documentElement.clientWidth + 'px'
-    }
-    window.addEventListener('resize', resizenavbar)
+        document.documentElement.clientWidth + 'px';
+    };
+    window.addEventListener('resize', resizenavbar);
 
-    resizenavbar()
+    resizenavbar();
   },
   methods: {
     menuclicked() {
-      this.$store.commit(
-        'content/isPoppedout',
-        !this.$store.state.content.isPoppedout
-      )
+      useNavbar.mobilenav = !useNavbar.mobilenav;
     },
     gohome() {
-      if (this.$route.path === this.homepage) return
+      if (this.$route.path === this.homepage) return;
 
-      this.$router.push(this.homepage)
+      this.$router.push(this.homepage);
     },
   },
-}
+};
 </script>
 
 <style>

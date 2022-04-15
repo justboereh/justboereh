@@ -62,161 +62,123 @@ export default {
   data() {
     return {
       target: null,
-      links: [
-        {
-          href: '/',
-          icon: 'home-4',
-          text: 'head home',
-        },
-        {
-          href: '//github.com/justboereh',
-          icon: 'folders',
-          text: 'my works',
-          target: '_blank',
-        },
-        {
-          href: '/#about',
-          icon: 'user-6',
-          text: 'about me',
-        },
-        {
-          href: '/blogs',
-          icon: 'article',
-          text: 'my blogs',
-        },
-        {
-          href: '/tools',
-          icon: 'tools',
-          text: 'just tools',
-        },
-      ],
-      socials: [
-        ['github', 'http://github.com/justboereh'],
-        ['youtube', '//youtube.com/justboereh'],
-        ['soundcloud', 'http://soundcloud.com/justboereh'],
-        ['twitter', 'http://twitter.com/justboereh'],
-        ['snapchat', 'https://www.snapchat.com/add/justboereh'],
-        ['instagram', 'http://instgram.com/justboereh'],
-      ],
-    }
+    };
   },
   computed: {
-    poppedout() {
-      return this.$store.state.content.isPoppedout
-    },
-    scrollTop() {
-      return this.$store.state.content.scrollTop
-    },
+    poppedout: () => useNavbar.mobilenav,
+    scrollTop: () => useContent.scrolltop,
+    links: () => useNavbar.links,
+    socials: () => useNavbar.socials,
   },
   watch: {
     poppedout(val) {
-      document.body.style.overflow = val ? 'hidden' : ''
-      document.documentElement.style.overflow = val ? 'hidden' : ''
+      document.body.style.overflow = val ? 'hidden' : '';
+      document.documentElement.style.overflow = val ? 'hidden' : '';
 
       if (val && this.target && this.target.querySelector('i')) {
-        this.$anime({
+        useAnime({
           targets: this.target.querySelector('i'),
           left: '-25%',
           duration: 0,
-        })
+        });
 
-        this.$anime({
+        useAnime({
           targets: this.target.querySelector('span'),
           opacity: 1,
           duration: 0,
-        })
+        });
       }
 
-      this.$refs.popout.style.pointerEvents = val ? 'auto' : 'none'
-      this.$anime({
+      this.$refs.popout.style.pointerEvents = val ? 'auto' : 'none';
+      useAnime({
         targets: this.$refs.popout,
         opacity: val ? 1 : 0,
         duration: 150,
         easing: 'cubicBezier(.5, .05, .1, .3)',
-      })
+      });
     },
     scrollTop(val) {
-      this.$anime({
+      useAnime({
         targets: this.$refs.popout,
         top: val,
         duration: 0,
-      })
+      });
     },
   },
   mounted() {
     const resizenavbar = () => {
       this.$refs.popout.style.height =
-        document.documentElement.clientHeight + 'px'
-    }
+        document.documentElement.clientHeight + 'px';
+    };
 
-    window.addEventListener('resize', resizenavbar)
+    window.addEventListener('resize', resizenavbar);
 
-    resizenavbar()
+    resizenavbar();
   },
   methods: {
     linkclicked({ target }) {
       while (!target.hasAttribute('href')) {
-        if (!target.parentNode) return
+        if (!target.parentNode) return;
 
-        target = target.parentNode
+        target = target.parentNode;
       }
 
       if (this.$route.path === target.getAttribute('href')) {
         if (target.querySelector('i')) {
-          this.$anime({
+          useAnime({
             targets: target.querySelector('i'),
             left: '25%',
             duration: 150,
             direction: 'alternate',
             easing: 'cubicBezier(.5, .05, .1, .3)',
-          })
-          this.$anime({
+          });
+          useAnime({
             targets: target.querySelector('span'),
             opacity: 0.75,
             duration: 150,
             direction: 'alternate',
             easing: 'cubicBezier(.5, .05, .1, .3)',
-          })
+          });
         }
 
-        return
+        return;
       }
 
-      this.target = target
+      this.target = target;
 
       const doRoute = () => {
-        this.$store.commit('content/isPoppedout', false)
+        useNavbar.mobilenav = false;
 
-        const isNewTab = target.getAttribute('target') === '_blank'
+        const isNewTab = target.getAttribute('target') === '_blank';
 
         isNewTab
           ? window.open(target.getAttribute('href'), '_blank')
-          : this.$router.push(target.getAttribute('href'))
-      }
+          : this.$router.push(target.getAttribute('href'));
+      };
 
       if (target.querySelector('i')) {
-        this.$anime({
+        useAnime({
           targets: target.querySelector('i'),
           left: '125%',
           duration: 350,
           easing: 'cubicBezier(.5, .05, .1, .3)',
-        })
-        this.$anime({
+        });
+        useAnime({
           targets: target.querySelector('span'),
           opacity: 0,
           duration: 350,
           easing: 'cubicBezier(.5, .05, .1, .3)',
-        })
+        });
 
         setTimeout(() => {
-          doRoute()
-        }, 400)
+          doRoute();
+        }, 400);
 
-        return
+        return;
       }
 
-      doRoute()
+      doRoute();
     },
   },
-}
+};
 </script>

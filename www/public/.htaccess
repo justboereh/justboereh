@@ -1,0 +1,5 @@
+ErrorDocument 500 https://justboereh.com/error?code=500
+ErrorDocument 404 https://justboereh.com/error?code=404
+ErrorDocument 401 https://justboereh.com/error?code=401
+
+Options All -Indexes

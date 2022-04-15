@@ -33,25 +33,19 @@
   </div>
 </template>
 
-<script>
-import works from '@/scripts/workslist'
+<script setup>
+import { ref } from 'vue';
+import worklist from '@/scripts/workslist';
 
-export default {
-  data() {
-    return {
-      works,
-    }
-  },
-  methods: {
-    projectclick({ target }) {
-      while (!target.hasAttribute('href')) {
-        if (!target.parentNode) return
+const works = ref(worklist);
 
-        target = target.parentNode
-      }
+const projectclick = ({ target }) => {
+  while (!target.hasAttribute('href')) {
+    if (!target.parentNode) return;
 
-      window.open(target.getAttribute('href'), '_blank')
-    },
-  },
-}
+    target = target.parentNode;
+  }
+
+  window.open(target.getAttribute('href'), '_blank');
+};
 </script>
