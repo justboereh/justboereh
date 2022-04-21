@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div>
     <div class="w-full h-v14 flex justify-center items-center flex-col">
       <h1 class="text-3xl">⚠️ ERROR</h1>
 
@@ -18,7 +18,7 @@
         </span>
       </span>
     </div>
-  </Layout>
+  </div>
 </template>
 
 <script>

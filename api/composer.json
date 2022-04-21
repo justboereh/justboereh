@@ -1,6 +1,11 @@
 {
-    "require": {
-        "vlucas/phpdotenv": "^5.4",
-        "j0k3r/php-imgur-api-client": "^4.0"
-    }
+  "require": {
+    "vlucas/phpdotenv": "^5.4",
+    "j0k3r/php-imgur-api-client": "^4.0",
+    "j4mie/idiorm": "^1.5.7",
+    "paragonie/easydb": "2",
+    "latitude/latitude": "^4.2",
+    "aura/sqlquery": "^2.7",
+    "nilportugues/sql-query-builder": "^1.8"
+  }
 }

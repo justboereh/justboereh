@@ -2,7 +2,7 @@
   <div
     id="nav"
     ref="navbar"
-    class="'w-full top-0 h-14 fixed border-b bg-gray-100 border-gray-300"
+    class="w-screen top-0 h-14 fixed border-b bg-gray-100 border-gray-300"
   >
     <div class="flex w-full h-full items-center px-1">
       <img
@@ -21,6 +21,8 @@
       <span class="flex-1"></span>
 
       <span :class="navbarmenuclass" @click="menuclicked"></span>
+
+      <NavbarDesktop />
     </div>
   </div>
 </template>
@@ -71,6 +73,7 @@ export default {
     gohome() {
       if (this.$route.path === this.homepage) return;
 
+      console.log(this.$route.path);
       this.$router.push(this.homepage);
     },
   },

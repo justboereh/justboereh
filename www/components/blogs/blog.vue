@@ -6,7 +6,7 @@
       class="-z-10 aspect-video rounded-sm"
     />
 
-    <div class="flex md:text-lg p-2 pt-4">
+    <div class="flex md:text-base p-2 pt-4">
       <h1
         v-if="abstrnumsame(blog.timeposted, blog.timeupdated)"
         class="opacity-50"
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 export default {
   props: {
@@ -52,16 +52,16 @@ export default {
   },
   methods: {
     blogSlug({ id, title }) {
-      title = title.toLowerCase().split(' ').join('-')
+      title = title.toLowerCase().split(' ').join('-');
 
-      return `/blogs/${id}-${title}`
+      return `/blogs/${id}-${title}`;
     },
     timestr(str) {
-      return dayjs(Number(str)).format('MMM D YYYY')
+      return dayjs(Number(str)).format('MMM D YYYY');
     },
     abstrnumsame(a, b) {
-      return Number(a) === Number(b)
+      return Number(a) === Number(b);
     },
   },
-}
+};
 </script>

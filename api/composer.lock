@@ -4,8 +4,76 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45ebddaca362d80ecaf8f8100ea50cfe",
+    "content-hash": "4d5a88315dabf9f2c26311b1cace5db6",
     "packages": [
+        {
+            "name": "aura/sqlquery",
+            "version": "2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.SqlQuery.git",
+                "reference": "dd81b57aeb43628180a9c70a4df58d872024d7f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.SqlQuery/zipball/dd81b57aeb43628180a9c70a4df58d872024d7f2",
+                "reference": "dd81b57aeb43628180a9c70a4df58d872024d7f2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "suggest": {
+                "aura/sql": "Provides an extension to the native PDO along with a profiler and connection locator. Use version 2.*."
+            },
+            "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aura\\SqlQuery\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aura.SqlQuery Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.SqlQuery/contributors"
+                }
+            ],
+            "description": "Object-oriented query builders for MySQL, Postgres, SQLite, and SQLServer; can be used with any database connection library.",
+            "homepage": "https://github.com/auraphp/Aura.SqlQuery",
+            "keywords": [
+                "database",
+                "db",
+                "delete",
+                "dml",
+                "insert",
+                "mysql",
+                "pdo",
+                "pgsql",
+                "postgres",
+                "postgresql",
+                "query",
+                "select",
+                "sql",
+                "sql server",
+                "sqlite",
+                "sqlserver",
+                "update"
+            ],
+            "support": {
+                "issues": "https://github.com/auraphp/Aura.SqlQuery/issues",
+                "source": "https://github.com/auraphp/Aura.SqlQuery/tree/2.7.1"
+            },
+            "time": "2016-10-03T20:34:56+00:00"
+        },
         {
             "name": "graham-campbell/result-type",
             "version": "v1.0.4",
@@ -462,6 +530,300 @@
             "time": "2021-12-03T13:43:26+00:00"
         },
         {
+            "name": "j4mie/idiorm",
+            "version": "v1.5.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/j4mie/idiorm.git",
+                "reference": "d23f97053ef5d0b988a02c6a71eb5c6118b2f5b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/j4mie/idiorm/zipball/d23f97053ef5d0b988a02c6a71eb5c6118b2f5b4",
+                "reference": "d23f97053ef5d0b988a02c6a71eb5c6118b2f5b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "ext-pdo_sqlite": "*",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "idiorm.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause",
+                "BSD-3-Clause",
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jamie Matthews",
+                    "email": "jamie.matthews@gmail.com",
+                    "homepage": "http://j4mie.org",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Simon Holywell",
+                    "email": "treffynnon@php.net",
+                    "homepage": "http://simonholywell.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Durham Hale",
+                    "email": "me@durhamhale.com",
+                    "homepage": "http://durhamhale.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5",
+            "homepage": "http://j4mie.github.com/idiormandparis",
+            "keywords": [
+                "idiorm",
+                "orm",
+                "query builder"
+            ],
+            "support": {
+                "issues": "https://github.com/j4mie/idiorm/issues",
+                "source": "https://github.com/j4mie/idiorm"
+            },
+            "time": "2020-04-29T00:37:09+00:00"
+        },
+        {
+            "name": "latitude/latitude",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shadowhand/latitude.git",
+                "reference": "dc1182ec88cfb532b049af83d44863d373897587"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shadowhand/latitude/zipball/dc1182ec88cfb532b049af83d44863d373897587",
+                "reference": "dc1182ec88cfb532b049af83d44863d373897587",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "eloquent/liberator": "^2.0",
+                "eloquent/phpstan-phony": "^0.5.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.11.12",
+                "phpstan/phpstan-phpunit": "^0.11.2",
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Latitude\\QueryBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com",
+                    "homepage": "https://github.com/shadowhand"
+                }
+            ],
+            "description": "A SQL query builder with zero dependencies",
+            "support": {
+                "issues": "https://github.com/shadowhand/latitude/issues",
+                "source": "https://github.com/shadowhand/latitude/tree/4.2.0"
+            },
+            "time": "2020-06-24T15:01:19+00:00"
+        },
+        {
+            "name": "nilportugues/sql-query-builder",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nilportugues/php-sql-query-builder.git",
+                "reference": "cc3401099328ddfad54b2b801e38e05a50da11bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nilportugues/php-sql-query-builder/zipball/cc3401099328ddfad54b2b801e38e05a50da11bd",
+                "reference": "cc3401099328ddfad54b2b801e38e05a50da11bd",
+                "shasum": ""
+            },
+            "require": {
+                "nilportugues/sql-query-formatter": "~1.2",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.9",
+                "nilportugues/php_backslasher": "~0.2",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NilPortugues\\Sql\\QueryBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nil Portugués Calderó",
+                    "email": "contact@nilportugues.com",
+                    "homepage": "http://nilportugues.com",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com",
+                    "homepage": "http://shadowhand.me/",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "An elegant lightweight and efficient SQL QueryInterface BuilderInterface supporting bindings and complicated query generation.",
+            "homepage": "http://nilportugues.com",
+            "keywords": [
+                "builder",
+                "mysql",
+                "orm",
+                "query",
+                "query builder",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/nilportugues/php-sql-query-builder/issues",
+                "source": "https://github.com/nilportugues/php-sql-query-builder/tree/1.8.0"
+            },
+            "time": "2020-04-07T22:51:47+00:00"
+        },
+        {
+            "name": "nilportugues/sql-query-formatter",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nilportugues/sql-query-formatter.git",
+                "reference": "a539162a13e3217827237d5809fbaf25e136dc0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nilportugues/sql-query-formatter/zipball/a539162a13e3217827237d5809fbaf25e136dc0e",
+                "reference": "a539162a13e3217827237d5809fbaf25e136dc0e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.9",
+                "nilportugues/php_backslasher": "~0.2",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NilPortugues\\Sql\\QueryFormatter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nil Portugués Calderó",
+                    "email": "contact@nilportugues.com",
+                    "homepage": "http://nilportugues.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "A very lightweight PHP class that reformats unreadable and computer-generated SQL query statements to human-friendly, readable text.",
+            "homepage": "http://nilportugues.com",
+            "keywords": [
+                "format",
+                "formatter",
+                "mysql",
+                "parser",
+                "query",
+                "reformat",
+                "sql",
+                "sql server",
+                "tokenizer"
+            ],
+            "support": {
+                "issues": "https://github.com/nilportugues/sql-query-formatter/issues",
+                "source": "https://github.com/nilportugues/sql-query-formatter/tree/master"
+            },
+            "time": "2015-11-02T23:24:39+00:00"
+        },
+        {
+            "name": "paragonie/easydb",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/easydb.git",
+                "reference": "a05c4f70e2837d73b9895932b6201c059d688818"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/easydb/zipball/a05c4f70e2837d73b9895932b6201c059d688818",
+                "reference": "a05c4f70e2837d73b9895932b6201c059d688818",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\EasyDB\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Scott Arciszewski",
+                    "email": "scott@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy-to-use database abstraction",
+            "keywords": [
+                "database",
+                "pdo",
+                "security",
+                "sql"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/easydb/issues",
+                "source": "https://github.com/paragonie/easydb"
+            },
+            "time": "2016-10-19T03:06:26+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.8.1",
             "source": {
@@ -738,16 +1100,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced"
+                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
-                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
+                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
                 "shasum": ""
             },
             "require": {
@@ -785,7 +1147,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.1"
             },
             "funding": [
                 {
@@ -801,7 +1163,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-01T23:48:49+00:00"
+            "time": "2022-01-02T09:55:41+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

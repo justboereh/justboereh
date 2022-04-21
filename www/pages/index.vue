@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <div>
     <HomeGttt />
     <HomeProjects />
 
@@ -13,5 +13,8 @@
     <br />
 
     <End>thank you for coming 💚</End>
-  </Layout>
+  </div>
 </template>
+
+<script setup>
+</script>

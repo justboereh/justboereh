@@ -23,4 +23,4 @@ export default [
       description: 'My very own personal website.',
     },
   ],
-]
+];

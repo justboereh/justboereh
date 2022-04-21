@@ -89,7 +89,7 @@ export default {
   }
 }
 
-@keyframes bgcolor {
+@keyframes bgposition {
   0% {
     background-position: 0% 50%;
   }
@@ -123,8 +123,8 @@ body::-webkit-scrollbar-thumb {
 
 .bgprisec,
 body::-webkit-scrollbar-thumb {
-  animation: bgcolor 18s infinite linear;
-  background: linear-gradient(45deg, #f79226, #ee2d30, #f79226, #ee2d30);
+  animation: bgposition 18s infinite linear;
+  background: linear-gradient(-45deg, #f79226, #ee2d30, #f79226, #ee2d30);
   background-size: 500% 500%;
 }
 </style>

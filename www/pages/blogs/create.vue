@@ -44,7 +44,7 @@ export default {
       bodyvalue: '',
       titlevalue: '',
       tagsvalue: [],
-    }
+    };
   },
   head: { title: 'post a blogs — justboereh' },
   methods: {
@@ -57,13 +57,19 @@ export default {
         ',' +
         Math.floor(100 * Math.random() + (above155 ? 155 : 0)) +
         ')'
-      )
+      );
     },
     valuechange([type, value]) {
-      if (!this[type + 'value']) return
+      if (!this[type + 'value']) return;
 
-      this[type + 'value'] = value
+      this[type + 'value'] = value;
     },
   },
-}
+};
+</script>
+
+<script setup>
+definePageMeta({
+  layout: 'blogs',
+});
 </script>

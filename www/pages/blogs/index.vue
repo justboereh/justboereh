@@ -1,5 +1,5 @@
 <template>
-  <Layout homepage="/blogs">
+  <div class="w-full max-w-6xl m-auto">
     <div v-show="!didError && !loading">
       <BlogsGood />
 
@@ -56,7 +56,7 @@
         </BlogsPlaceholder>
       </div>
     </div>
-  </Layout>
+  </div>
 </template>
 
 <script>
@@ -74,7 +74,7 @@ export default {
     },
   },
   mounted() {
-    getBlogs.call(this, () => (this.didError = true));
+    getBlogs({ callback: () => (this.didError = !0) });
   },
   methods: {
     goback() {
@@ -85,4 +85,10 @@ export default {
     },
   },
 };
+</script>
+
+<script setup>
+definePageMeta({
+  layout: 'blogs',
+});
 </script>
